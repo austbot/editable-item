@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <style>
+    .make-editable-content.edit-mode{
+      color: red;
+    }
+  </style>
 </head>
 <body>
 
@@ -10,11 +15,15 @@
   <p>Hello There! This is editable.</p>
 </div>
 
+<div class="main-article" make-editable>
+  <p>Hello my man! This is editable.</p>
+</div>
+
 <script type="text/ng-template" id="wrapElement.html">
   <div class="make-editable-wrapper" >
     <button class="button edit-button" ng-if="editMode" ng-click="save()">Save</button>
     <button class="button edit-button" ng-if="editMode==false" ng-click="edit()">Edit</button>
-    <div class="make-editable-content" ng-attr-contenteditable="{{editMode}}" ng-transclude>
+    <div class="make-editable-content" ng-class="{'edit-mode': editMode}" ng-attr-contenteditable="{{editMode}}" ng-transclude>
     </div>
   </div>
 </script>
